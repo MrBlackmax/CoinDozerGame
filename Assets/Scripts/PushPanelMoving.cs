@@ -14,6 +14,6 @@ public class PushPanelMoving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate((transform.forward * -1) * Mathf.Cos(Time.time) * Time.deltaTime);
+        transform.Translate((transform.forward * -1f) * Mathf.Cos(Time.time) * Time.deltaTime);
     }
 }

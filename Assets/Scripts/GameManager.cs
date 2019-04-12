@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Text coinText;
     public GameObject coin;
     public int startCoins;
+    public CoinSpawningGroup spawners;
     int score = 0;
     
     // Use this for initialization
@@ -36,16 +37,14 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            //<2.85 >-2.5
-            Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,10f));
-            if (Math.Abs(pos.x) < 2.9) SpawnCoin(pos);
+            SpawnCoin();
         }
     }
 
-    private void SpawnCoin(Vector3 position)
+    private void SpawnCoin()
     {
         AddCoins(-1);
-        Instantiate(coin, new Vector3(position.x,position.y,1), Quaternion.identity);
+        spawners.spawnCoins(1);
     }
 
     public void IncrementScore(int amount)
